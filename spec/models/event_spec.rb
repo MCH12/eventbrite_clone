@@ -2,6 +2,24 @@ require 'spec_helper'
 
 describe Event do
 
+  it { should ensure_length_of(:name).is_at_least(5).is_at_most(50) }
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:venue) }
+  it { should validate_presence_of(:address) }
+  it { should validate_presence_of(:city) }
+  it { should validate_presence_of(:state) }
+  it { should validate_presence_of(:zip_code) }
+  it { should validate_presence_of(:organizer_id) }
+  it { should validate_presence_of(:start_datetime) }
+  it { should validate_presence_of(:end_datetime) }
+  %w(1234 1234a 123456).each do |value|
+    it { should_not allow_value(value).for(:zip_code) }
+  end
+  %w(10 AAA ZB X).each do |value|
+    it { should_not allow_value(value).for(:state) }
+  end
+  it { should ensure_length_of(:address).is_at_least(5).is_at_most(50) }
+  it { should ensure_length_of(:city).is_at_least(5).is_at_most(50) }
 
   describe "validations" do
 
@@ -15,17 +33,9 @@ describe Event do
         before { event.valid? }
         subject { event.errors.full_messages }
 
-        it { should include("Name can't be blank") }
-        it { should include("Venue can't be blank") }
-        it { should include("Private status can't be blank") }
-        it { should include("Address can't be blank") }
-        it { should include("City can't be blank") }
-        it { should include("State can't be blank") }
-        it { should include("Zip code can't be blank") }
-        it { should include("Start datetime can't be blank") }
-        it { should include("End datetime can't be blank") }
         # it { should include("Terms of service must be accepted") }
         it { should include("Zip code must be exactly 5 digits") }
+
       end
     end
 
@@ -37,7 +47,4 @@ describe Event do
     end
   end
 
-
 end
-
-# :address, :city, :end_datetime, :name, :organizer_id, :start_datetime, :state, :zip, presence: true
