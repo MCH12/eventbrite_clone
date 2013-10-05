@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :address
       t.string :city
       t.string :state
-      t.integer :zip
+      t.integer :zip_code
       t.datetime :start_datetime
       t.datetime :end_datetime
       t.string :logo
