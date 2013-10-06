@@ -6,6 +6,7 @@ describe Registration do
   it { should validate_presence_of(:event_id) }
   it { should validate_presence_of(:ticket_type_id) }
   it { should validate_presence_of(:ticket_pdf) }
+  it { should_not allow_value(false).for(:paid) }
 
   describe "ticket PDF uniqueness" do
     before do
@@ -16,16 +17,6 @@ describe Registration do
 
     subject { @ticket2.errors.full_messages }
     it { should include "Ticket pdf has already been taken" }
-  end
-
-  describe "unpaid registration should be invalid" do
-    let(:ticket) { FactoryGirl.create(:registration) }
-    before do
-      ticket.paid = false
-      ticket.terms_of_service = "1"
-    end
-    subject { ticket }
-    it { should_not be_valid }
   end
 
   describe "terms of service" do
