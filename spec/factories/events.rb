@@ -11,7 +11,6 @@ FactoryGirl.define do
     end_datetime "2013-10-05 13:36:27"
     logo "MyString"
     organizer_id 1
-    terms_of_service "1"
     venue "MyString"
     private_status false
   end

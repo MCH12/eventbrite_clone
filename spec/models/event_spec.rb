@@ -21,6 +21,14 @@ describe Event do
   it { should ensure_length_of(:address).is_at_least(5).is_at_most(50) }
   it { should ensure_length_of(:city).is_at_least(5).is_at_most(50) }
 
+  describe "terms of service" do
+
+    let(:no_acceptance) { FactoryGirl.create(:event) }
+    subject { no_acceptance }
+    it { should_not be_valid }
+
+  end
+
   describe "validations" do
 
     describe "for an invalid event" do
@@ -42,8 +50,10 @@ describe Event do
     describe "for a valid event" do
       let(:event) { FactoryGirl.create(:event) }
       subject { event }
-
-      it { should be_valid }
+      it "should be valid" do
+        event.terms_of_service = "1"
+        expect(event).to be_valid
+      end
     end
   end
 
