@@ -5,7 +5,7 @@ FactoryGirl.define do
     attendee_id 1
     event_id 1
     ticket_type_id 1
-    paid false
+    paid true
     ticket_pdf "MyString"
   end
 end
