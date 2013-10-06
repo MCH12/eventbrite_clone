@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :ticket_type do
-    name "MyString"
+    name "MyText"
+    description "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
     sales_end "2013-10-05 13:33:47"
-    price 1.5
-    fee 1.5
-    description "MyText"
+    price 1.50
+    fee 1.50
     sold_out false
     event_id 1
     total_quantity 1
