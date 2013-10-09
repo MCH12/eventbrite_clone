@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe TicketType do
 
+  it { should have_many(:registrations) }
+  it { should belong_to(:event) }
+
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:sales_end) }
   it { should validate_presence_of(:price) }
@@ -30,5 +33,15 @@ describe TicketType do
   it { should ensure_length_of(:description).is_at_least(100).is_at_most(2000) }
   it { should validate_numericality_of(:max_per_attendee).is_greater_than(0).only_integer }
   it { should validate_numericality_of(:total_quantity).is_greater_than(0).only_integer }
+
+
+  describe "destroying an event destroys its ticket types" do
+    before do
+      @tickettype = FactoryGirl.create(:ticket_type)
+      Event.first.destroy
+    end
+    subject { TicketType.count }
+    it { should eq 0 }
+  end
 
 end

@@ -1,12 +1,16 @@
 class Registration < ActiveRecord::Base
-  attr_accessor :terms_of_service
-  attr_accessible :attendee_id, :event_id, :paid, :ticket_pdf, :ticket_type_id
+
+  belongs_to :attendee, class_name: "User"
+  belongs_to :event
+  belongs_to :ticket_type
+  attr_accessible :paid, :ticket_pdf
 
   before_save :default_values
 
   validates :attendee_id, :event_id, :ticket_pdf, :ticket_type_id, presence: true
   validates_uniqueness_of :ticket_pdf
   validates :paid, inclusion: { in: [true] }
+  validates :terms_of_service, format: { with: /[1]/ }
 
   validate do |registration|
     if registration.terms_of_service == "0"
@@ -17,7 +21,6 @@ class Registration < ActiveRecord::Base
   private
 
   def default_values
-    self.terms_of_service ||= "0"
     self.paid ||= false
   end
 

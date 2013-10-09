@@ -10,8 +10,9 @@ FactoryGirl.define do
     start_datetime "2013-10-05 13:36:27"
     end_datetime "2013-10-05 13:36:27"
     logo "MyString"
-    organizer_id 1
+    organizer
     venue "MyString"
     private_status false
+    terms_of_service "1"
   end
 end

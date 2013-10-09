@@ -1,4 +1,8 @@
 class TicketType < ActiveRecord::Base
+
+  has_many :registrations, dependent: :destroy
+  belongs_to :event
+
   attr_accessible :description, :event_id, :fee, :max_per_attendee, :name, :price, :sales_end, :sold_out, :total_quantity
 
   validates :name, :sales_end, :price, :fee, :description, :event_id, :total_quantity, :max_per_attendee, presence: true

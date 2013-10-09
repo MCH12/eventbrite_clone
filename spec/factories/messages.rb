@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :message do
-    organizer_id 1
-    sender_email "MyString"
+    organizer
+    sender_email { Faker::Internet.email }
     content "MyText"
   end
 end
