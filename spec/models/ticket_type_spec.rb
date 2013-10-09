@@ -33,6 +33,7 @@ describe TicketType do
   it { should ensure_length_of(:description).is_at_least(100).is_at_most(2000) }
   it { should validate_numericality_of(:max_per_attendee).is_greater_than(0).only_integer }
   it { should validate_numericality_of(:total_quantity).is_greater_than(0).only_integer }
+  it { should validate_uniqueness_of(:name).scoped_to(:event_id).with_message("of ticket type can only occur once per event.") }
 
 
   describe "destroying an event destroys its ticket types" do
