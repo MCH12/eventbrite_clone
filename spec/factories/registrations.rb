@@ -2,10 +2,11 @@
 
 FactoryGirl.define do
   factory :registration do
-    attendee_id 1
-    event_id 1
-    ticket_type_id 1
+    attendee
+    ticket_type
+    event { ticket_type.event }
     paid true
-    ticket_pdf "MyString"
+    ticket_pdf { "#{Faker::Lorem.word}.pdf" }
+    terms_of_service "1"
   end
 end

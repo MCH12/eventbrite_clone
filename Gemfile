@@ -6,6 +6,11 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'faker'
+
+group :test do
+  gem 'simplecov', :require => false
+end
 
 group :development, :test do
 
@@ -31,6 +36,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'omniauth-twitter'
 
 gem 'jquery-rails'
 

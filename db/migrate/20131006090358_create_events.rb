@@ -9,9 +9,10 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :start_datetime
       t.datetime :end_datetime
       t.string :logo
-      t.integer :organizer_id
+      t.references :organizer
 
       t.timestamps
     end
+    add_index :events, :organizer_id
   end
 end

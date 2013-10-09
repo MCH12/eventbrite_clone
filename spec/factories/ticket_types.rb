@@ -8,7 +8,7 @@ FactoryGirl.define do
     price 1.50
     fee 1.50
     sold_out false
-    event_id 1
+    event
     total_quantity 1
     max_per_attendee 1
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005204707) do
+ActiveRecord::Schema.define(:version => 20131006233103) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(:version => 20131005204707) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.string   "terms_of_service"
     t.boolean  "private_status"
+    t.string   "terms_of_service"
   end
+
+  add_index "events", ["organizer_id"], :name => "index_events_on_organizer_id"
 
   create_table "messages", :force => true do |t|
     t.integer  "organizer_id"
@@ -47,9 +49,14 @@ ActiveRecord::Schema.define(:version => 20131005204707) do
     t.integer  "ticket_type_id"
     t.boolean  "paid"
     t.string   "ticket_pdf"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "terms_of_service"
   end
+
+  add_index "registrations", ["attendee_id"], :name => "index_registrations_on_attendee_id"
+  add_index "registrations", ["event_id"], :name => "index_registrations_on_event_id"
+  add_index "registrations", ["ticket_type_id"], :name => "index_registrations_on_ticket_type_id"
 
   create_table "ticket_types", :force => true do |t|
     t.string   "name"
@@ -66,11 +73,18 @@ ActiveRecord::Schema.define(:version => 20131005204707) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "username"
     t.string   "password_digest"
     t.string   "email"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "facebook_id"
+    t.string   "twitter_id"
+    t.text     "description"
+    t.string   "website"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "terms_of_service"
   end
 
 end
