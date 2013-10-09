@@ -13,4 +13,5 @@ class TicketType < ActiveRecord::Base
   validates :description, length: { in: 100..2000}
   validates :max_per_attendee, length: { in: 1..2 }
   validates :total_quantity, length: { in: 1..4 }
+  validates :name, uniqueness: { case_sensitive: false, scope: :event_id, message: "of ticket type can only occur once per event."}
 end

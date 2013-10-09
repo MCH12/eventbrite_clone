@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates  :name, :venue, :address, :city,  :state, :zip_code, :organizer_id, :start_datetime, :end_datetime, presence: true
   validates :private_status, inclusion: { in: [true, false], message: "can't be blank" }
   validates :zip_code, format: { with: /^\d{5}$/, message: "must be exactly 5 digits" }
-  validates :state, inclusion: { in: $STATES }
+  validates :state, inclusion: { in: STATES }
   validates :name, :address, :city, length: { within: 5..50 }
   validate do |event|
     if event.terms_of_service == "0"

@@ -5,7 +5,8 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     username { Faker::Lorem.words(2).join('') }
-    password_digest "password"
+    password "password"
+    password_confirmation "password"
     email { Faker::Internet.email }
     facebook_id { Faker::Lorem.words(3).join('') }
     twitter_id { Faker::Lorem.words(3).join('') }

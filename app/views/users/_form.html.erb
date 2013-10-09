@@ -1,0 +1,24 @@
+
+<%= render partial: "shared/errors", locals: { errors: @user.errors } %>
+<%= form_for(@user) do |f| %>
+
+  <%= f.label :username, "Username" %>
+  <%= f.text_field :username, placeholder: "Ex.- 'cooluser007'" %>
+  <%= f.label :first_name, "First Name" %>
+  <%= f.text_field :first_name, placeholder: "Ex.- Bob" %>
+  <%= f.label :last_name, "Last Name" %>
+  <%= f.text_field :last_name, placeholder: "Ex.- Newhart" %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation, "Confirm Password" %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email, placeholder: "Ex.- cooluser007@gmail.com" %>
+  <%= f.label :website, "Website" %>
+  <%= f.text_field :website, placeholder: "Ex.- 'me.com', 'www.me.com'" %>
+  <%= f.label :terms_of_service, ("I accept the #{link_to 'terms of service.', root_path}").html_safe %>
+  <%= f.check_box :terms_of_service %><br>
+  <%= f.submit "Sign Up!" %>
+
+
+<% end %>
