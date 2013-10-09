@@ -1,4 +1,16 @@
+
+
 TODO: Login with Facebook
 TODO: Login with Twitter
 TODO: Login with Google
-<h1>What up Rick?</h1>
+<h1>Log In</h1>
+
+<%= form_for(:session, url: sessions_path) do |f| %>
+
+  <%= f.label :username, "Username" %>
+  <%= f.text_field :username, placeholder: "Ex.- " %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Log In" %>
+
+<% end %>

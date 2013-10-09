@@ -1,0 +1,9 @@
+<% if errors.any? %>
+  <% errors.delete(:password_digest) %>
+  <p><%= pluralize(errors.count, "error") %> prevented you from signing up:</p>
+  <ul>
+    <% errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
